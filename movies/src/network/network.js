@@ -1,22 +1,37 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-    baseURL: "https://api.themoviedb.org/3/movie/popular",
-    params: {
-      api_key: "801e8bbfcf73f4e6bd852bc32bd613a6",
-    },
-  });
+  baseURL: "https://api.themoviedb.org/3/movie",
+  params : {
+    'api_key':"dcd1bd74b712d35627a8d6c3078ef226"
+  }
+});
 
-  axiosInstance.interceptors.request.use(
-    function(config){
-        return config
-    }
+// Add a request interceptor
+axiosInstance.interceptors.request.use(
+  function (config) {
+    // Do something before request is sent
+    console.log(config);
+    return config;
+  },
+  function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+  }
 );
+
+// Add a response interceptor
 axiosInstance.interceptors.response.use(
-    function(response){
-        return response
-    },
-    function(error){
-        return Promise.reject(error);
-    }
-)
+  function (response) {
+    // Any status code that lie within the range of 2xx cause this function to trigger
+    // Do something with response data
+    console.log(response)
+    return response;
+  },
+  function (error) {
+    // Any status codes that falls outside the range of 2xx cause this function to trigger
+    // Do something with response error
+    // Show ERROR Handler Message
+    return Promise.reject(error);
+  }
+);
