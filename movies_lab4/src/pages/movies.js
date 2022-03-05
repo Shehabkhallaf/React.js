@@ -32,7 +32,7 @@ export default function Movies() {
           {movies.map((movie) => {
             return (
               <div className="col-lg-3" key={movie.id}>
-                <div className="card border-0 rounded shadow my-3">
+                <div className="card border-0">
                   <Link to={`/movie-details/${movie.id}`}>
                     <img
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -41,7 +41,7 @@ export default function Movies() {
                     />
                   </Link>
                   <div className="card-body">
-                     <h5 className="card-title fs-6 fw-bold">{movie.title}</h5> 
+                     <h5 className="card-title fs-6">{movie.title}</h5> 
                     <p className="card-text text-muted">{movie.popularity}</p> 
                   </div>
                 </div>
@@ -49,17 +49,17 @@ export default function Movies() {
             );
           })}
         </div>
-        <div className="text-center mt-4">
+        <div>
           <Link
             type="button"
-            className="btn btn-outline-dark me-5 px-4"
+            className="btn btn-outline-dark m-5 px-4"
             onClick={changePageNumer}
           >
             Prev
           </Link>
           <Link
             type="button"
-            className="btn btn-outline-dark ms-5 px-4"
+            className="btn btn-outline-dark px-4"
             onClick={increasePageNumer}
           >
             Next
