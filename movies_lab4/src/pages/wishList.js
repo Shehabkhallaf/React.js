@@ -1,7 +1,9 @@
-import React from 'react'
+import Favorites from "../components/fav";
 
-export default function WishList(){
+export default function FavPage(){
     return(
-        <div> wish list </div>
+        <>
+            <Favorites></Favorites>
+        </>
     )
 }

@@ -9,7 +9,7 @@ export default function Header(){
     <div className="collapse navbar-collapse d-flex" id="navbarNav">
       <ul className="navbar-nav ms-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="/wishlist">WishList</Link>
+          <Link className="nav-link" to="/favorites">WishList</Link>
         </li>
       </ul>
     </div>

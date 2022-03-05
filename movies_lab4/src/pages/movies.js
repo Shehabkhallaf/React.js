@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../network/network";
 import { Link } from "react-router-dom";
-import Header from "../components/header";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' 
+
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -28,22 +26,24 @@ export default function Movies() {
   };
   return (
     <>
-      <Header />
       <div className="container my-5">
         <div className="row">
           {movies.map((movie) => {
             return (
-              <div className="col-lg-3" key={movie.id}>
-                <div className="card border-0 my-3 shadow rounded-3 position-relative">
-                  
+              <div className="col-lg-2" key={movie.id}>
+                <Link to={`/favorites/${movie.id}`}>
+                    <i class="fa-solid fa-star fs-3 d-flex justify-content-center text-decoration-none text-light bg-dark p-2"></i>
+                  </Link>
+                <div className="card border-0 shadow rounded-3">
                   <Link to={`/movie-details/${movie.id}`}>
                     <img
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                      className="card-img-top rounded-3"
+                      className="card-img-top"
                       alt=""
                     />
                   </Link>
-                  <FontAwesomeIcon icon="fa-solid fa-star" />                  <div className="card-body">
+
+                  <div className="card-body">
                     <h5 className="card-title fs-6">{movie.title}</h5>
                   </div>
                 </div>
