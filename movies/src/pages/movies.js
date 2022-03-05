@@ -31,7 +31,7 @@ export default function Movies() {
         <div className="row">
           {movies.map((movie) => {
             return (
-              <div className="col-lg-3" key={movie.id}>
+              <div className="col-lg-2" key={movie.id}>
                 <div className="card border-0 rounded shadow my-3">
                   <Link to={`/movie-details/${movie.id}`}>
                     <img
