@@ -41,8 +41,8 @@ export default function Movies() {
                     />
                   </Link>
                   <div className="card-body">
-                    {/* <h5 className="card-title fs-6">{movie.title}</h5> */}
-                    {/* <p className="card-text text-muted">{movie.popularity}</p> */}
+                     <h5 className="card-title fs-6">{movie.title}</h5> 
+                    <p className="card-text text-muted">{movie.popularity}</p> 
                   </div>
                 </div>
               </div>
