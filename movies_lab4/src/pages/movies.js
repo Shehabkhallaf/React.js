@@ -51,12 +51,7 @@ export default function Movies(props) {
           {movies.map((movie) => {
             return (
               <div className="col-lg-2" key={movie.id}>
-                <button
-                  onClick={(event) => addFavourite(event, movie)}
-                  className="btn btn-dark"
-                >
-                  <i className={`fs-3 fa-solid fa-star`}></i>
-                </button>
+                
                 <div className="card border-0 shadow rounded-3">
                   <Link to={`/movie-details/${movie.id}`}>
                     <img
@@ -66,8 +61,14 @@ export default function Movies(props) {
                     />
                   </Link>
 
-                  <div className="card-body">
-                    <h5 className="card-title fs-6">{movie.title}</h5>
+                  <div className="card-body d-flex align-items-center">
+                    <h5 className="card-title fs-6 me-auto">{movie.title}</h5>
+                    <button
+                  onClick={(event) => addFavourite(event, movie)}
+                  className="btn btn-outline-dark text-dark ms-auto"
+                >
+                  <i className={`fs-5 fa-solid fa-star`}></i>
+                </button>
                   </div>
                 </div>
               </div>
