@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../network/network";
+import { addORremoveFavourit,changeCount} from "../store/actions/fav";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-
-export default function Movies() {
+export default function Movies(props) {
   const [movies, setMovies] = useState([]);
   let [pageNumber, setPageNumber] = useState(1);
   useEffect(() => {
@@ -24,6 +25,30 @@ export default function Movies() {
   const increasePageNumer = () => {
     setPageNumber(++pageNumber);
   };
+  const { movie } = props;
+  const fav = useSelector((state) => state.Favourit.favourits);
+  let cnt = useSelector((state) => state.Favourit.count);
+  // let color = useSelector((state) => state.Favourit.color);
+  const dispatch = useDispatch();
+  const addFavourit = (ev, movie) => {
+    const newData = [...fav];
+    if (!newData.includes(movie)) {
+      newData.push(movie);
+      // dispatch(changeColor("white"));
+      // console.log("inside",color);
+      // console.log(color,"push");
+      ev.target.style.color = "yellow";
+      dispatch(changeCount(++cnt));
+      dispatch(addORremoveFavourit(newData));
+      return;
+    }
+    const editData = newData.filter((data) => data !== movie);
+    // dispatch(changeColor("yellow"));
+    dispatch(changeCount(--cnt));
+    // console.log("outside",color);
+    ev.target.style.color ="white";
+    dispatch(addORremoveFavourit(editData));
+  };
   return (
     <>
       <div className="container my-5">
@@ -31,9 +56,13 @@ export default function Movies() {
           {movies.map((movie) => {
             return (
               <div className="col-lg-2" key={movie.id}>
-                <Link to={`/favorites/${movie.id}`}>
-                    <i class="fa-solid fa-star fs-3 d-flex justify-content-center text-decoration-none text-light bg-dark p-2"></i>
-                  </Link>
+                <button
+                  onClick={(event) => addFavourit(event, movie)}
+                  className="btn btn-dark"
+                >
+                  {/* ${color==="yellow"?"text-light":"text-warning"}*/}
+                  <i className={`fs-3 fa-solid fa-star`}></i>
+                </button>
                 <div className="card border-0 shadow rounded-3">
                   <Link to={`/movie-details/${movie.id}`}>
                     <img

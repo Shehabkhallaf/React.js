@@ -1,4 +1,5 @@
-import {createStore} from 'redux';
-import { fav } from './reducers/fav';
+import { createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import reducers from './reducers/combinedReducers'
 
-export const store = createStore(fav);
+export const store=createStore(reducers,composeWithDevTools());
