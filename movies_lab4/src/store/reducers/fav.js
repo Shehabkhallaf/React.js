@@ -1,6 +1,6 @@
-import { COUNT_MOVIE, FAVOURIT_MOVIE, COLOR_MOVIE } from "../actions/Favourit";
+import { COUNT_MOVIE, FAVOURIT_MOVIE, COLOR_MOVIE } from "../actions/fav";
 const INITIAL_STATE = {
-  favourits: [],
+  favourites: [],
   count: 0,
   color: "yellow",
 };
@@ -9,7 +9,7 @@ export default function Favourit(state = INITIAL_STATE, action) {
     case FAVOURIT_MOVIE:
       return {
         ...state,
-        favourits: action.payload,
+        favourites: action.payload,
       };
     case COUNT_MOVIE:
       return {

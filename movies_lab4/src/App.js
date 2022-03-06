@@ -5,7 +5,7 @@ import Movies from "./pages/movies";
 import MoviesDetails from "./pages/movieDetails";
 import NotFound from "./pages/NotFound";
 import Header from "./components/header";
-import FavPage from "./pages/favorites";
+import Favourite from "./pages/favorites";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <Switch>
         <Route path={"/"} exact component={Movies} />
         <Route path={"/movie-details/:id"} exact component={MoviesDetails} />
-        <Route path={"/favorites"} exact component={FavPage} />
+        <Route path={"/favorites"} exact component={Favourite} />
         <Route path={"*"} component={NotFound} />
       </Switch>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import Favourit from "./Favourit";
+import Favourite from "./fav";
 export default combineReducers({
-    Favourit
+    Favourite
 })

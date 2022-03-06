@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../network/network";
-import { addORremoveFavourit,changeCount} from "../store/actions/fav";
+import { addORremoveFavourite,changeCount} from "../store/actions/fav";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -26,28 +26,23 @@ export default function Movies(props) {
     setPageNumber(++pageNumber);
   };
   const { movie } = props;
-  const fav = useSelector((state) => state.Favourit.favourits);
-  let cnt = useSelector((state) => state.Favourit.count);
-  // let color = useSelector((state) => state.Favourit.color);
+  const fav = useSelector((state) => state.Favourite.favourites);
+  let cnt = useSelector((state) => state.Favourite.count);
   const dispatch = useDispatch();
-  const addFavourit = (ev, movie) => {
+  const addFavourite = (ev, movie) => {
     const newData = [...fav];
     if (!newData.includes(movie)) {
       newData.push(movie);
-      // dispatch(changeColor("white"));
-      // console.log("inside",color);
-      // console.log(color,"push");
+     
       ev.target.style.color = "yellow";
       dispatch(changeCount(++cnt));
-      dispatch(addORremoveFavourit(newData));
+      dispatch(addORremoveFavourite(newData));
       return;
     }
     const editData = newData.filter((data) => data !== movie);
-    // dispatch(changeColor("yellow"));
     dispatch(changeCount(--cnt));
-    // console.log("outside",color);
     ev.target.style.color ="white";
-    dispatch(addORremoveFavourit(editData));
+    dispatch(addORremoveFavourite(editData));
   };
   return (
     <>
@@ -57,10 +52,9 @@ export default function Movies(props) {
             return (
               <div className="col-lg-2" key={movie.id}>
                 <button
-                  onClick={(event) => addFavourit(event, movie)}
+                  onClick={(event) => addFavourite(event, movie)}
                   className="btn btn-dark"
                 >
-                  {/* ${color==="yellow"?"text-light":"text-warning"}*/}
                   <i className={`fs-3 fa-solid fa-star`}></i>
                 </button>
                 <div className="card border-0 shadow rounded-3">
